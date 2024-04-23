@@ -1,1 +1,0 @@
-API_SPORTS_KEY = '6c2f66cce57f31ffe4bba31a2fd8f86a'
