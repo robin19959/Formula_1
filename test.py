@@ -4,7 +4,7 @@ import requests
 from urllib.request import urlopen
 
 from flask import Flask, request
-from flask_restx import Api, Resource, fields
+from flask_restx import Api, Resource, fields, reqparse
 from config import API_SPORTS_KEY
 
 app = Flask(__name__)
@@ -80,7 +80,7 @@ class SpecificDriver(Resource):
 
     def get(self, name):
         drivers_data = self.load_drivers_data()
-        for driver_info in drivers_data['response']:
+        for driver_info in drivers_data['response']:        ### KAN TAS BORT!!
             driver_name = driver_info['driver']['name']
             if name.lower() == driver_name.lower():
                 print(f'Now we found the name {name} in our list\n')
@@ -91,22 +91,28 @@ class SpecificDriver(Resource):
                     {'message': f'{name} is not found in Formula 1'}}, 404
 
 
-# @api.route('/drivers')
-# class Drivers(Resource):
+@api.route('/drivers')
+class Drivers(Resource):
+    def get(self):
+        drivers = "/rankings/drivers?season=2024"
+
+        response = requests.get(url + drivers, headers=headers)
+
+        response_data = response.json()
+
+        drivers_json = json.dumps(response_data, indent=4)
+        save_json_file('driver_2024', drivers_json)
+
+        print(response.status_code)
+        print(response_data['response'])
+
+        return response_data['response'], 200
+
+# @api.route('/api/docs')         ### Denna ska göras !!!
+# class Documentation():
 #     def get(self):
-#         drivers = "/rankings/drivers?season=2024"
-#
-#         response = requests.get(url + drivers, headers=headers)
-#
-#         response_data = response.json()
-#
-#         drivers_json = json.dumps(response_data, indent=4)
-#         save_json_file('driver_2024', drivers_json)
-#
-#         print(response.status_code)
-#         print(response.json())
-#
-#         return response.json(), 200
+#         return with open('docs/docs.json')
+
 
 
 # @api.route('/drivers/NAME')     ### Ta redo på hur man gör sista 'NAME' dynamisk
