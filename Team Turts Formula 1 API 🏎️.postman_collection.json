@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "da5e4e85-bd5c-43eb-bbf7-18e52380626b",
+		"name": "Team Turts Formula 1 API 🏎️",
+		"description": "Wheter you are a fantasy Formula 1 enthuasiast, tech-savvy Formula 1 fan, or a family-oriented traveler following ht eF1 circuit, Team Turts API brings you closer to the the drivers racing Formula 1.\n\n## 🔖 What you get\n\n- All Formula 1 drivers\n- Driver stats\n    \n\n- (DELETE!!) Replace the content given brackets (()) with your API's details. (DELETE!!)\n- (DELETE!)Tips are formatted in `codespan` - feel free to read and remove them. (DELETE!!)\n    \n\n---\n\n`Start with a brief overview of what your API offers.`\n\nThe Turts F1 provides many API products, tools, and resources that enable you to ((add product value here)).\n\n`You can also list the APIs you offer, link to the relevant pages, or do both in this section.`\n\n## **Getting started guide**\n\n`List the steps or points required to start using your APIs. Make sure to cover everything required to reach success with your API as quickly as possible.`\n\nTo integrate our API into your applications and services, follow these steps:\n\n`The points given below are from The Postman API's documentation. You can reference it to write your own getting started guide.`\n\n- (MAYBE?????) **Obtain an API key:** Sign up om our website and click the 'Get API key' _in the top left corner._ # Comment: (Here we can provide an authentication setup/guide how to achieve this through our backend system)\n- **Make your first request**: Use the provided endpoints to start fetch Formula 1 drivers data.\n- **Secure communication**: Ensure all requests are made over HTTPS. We priotitize security, any requests sent via HTTP return an HTTP 301 redirect to the corresponding HTTPS resources.\n- **JSON formatting**: All request responses in JSON format. When an API request returns an error, it is sent in the JSON response as an error key.\n    \n\n## Authentication --- LETZ WAIT AND SEE IF THIS WILL BE IMPLEMENTED!\n\n`Add details on the authorization keys/tokens required, steps that cover how to get them, and the relevant error codes.`\n\nThe ((product name)) API uses ((add your API's authorization type)) for authentication.\n\n`The details given below are from the Postman API's documentation. You can reference it to write your own authentication section.`\n\nPostman uses API keys for authentication. You can generate a Postman API key in the [API keys](https://postman.postman.co/settings/me/api-keys) section of your Postman account settings.\n\nYou must include an API key in each request to the Postman API with the X-Api-Key request header.\n\n### Authentication error response\n\nIf an API key is missing, malformed, or invalid, you will receive an HTTP 401 Unauthorized response code.\n\n## Rate and usage limits\n\nWe are committed to providing a reliable and consistent API service. To ensure fair usage, the following limits apply:EndFragment\n\nAPI access rate limits apply at a per-API key basis in unit time. The limit is 300 requests per minute. Also, depending on your plan, you may have usage limits. If you exceed either limit, your request will return an HTTP 429 Too Many Requests status code.\n\nEach API response returns the following set of headers to help you identify your use status:\n\n| Header | Description |\n| --- | --- |\n| `X-RateLimit-Limit` | The maximum number of requests that the consumer is permitted to make per minute. |\n| `X-RateLimit-Remaining` | The number of requests remaining in the current rate limit window. |\n| `X-RateLimit-Reset` | The time at which the current rate limit window resets in UTC epoch seconds. |\n\n### 503 response\n\nAn HTTP `503` response from our servers indicates there is an unexpected spike in API access traffic. The server is usually operational within the next five minutes. If the outage persists or you receive any other form of an HTTP `5XX` error, [contact support](https://support.postman.com/hc/en-us/requests/new/).\n\n### **Need some help?**\n\n`Add links that customers can refer to whenever they need help.`\n\n- **Support and Resources**: Check out our tutorials and FAQ pages for quick answers.\n- **Community Forum**: Join out Discord channel: #Awesome_Iot_23, ask questions and connect with developers who have front row seats to a world in change.\n    \n\n**Further, we link to libraries used:**\n\n- GET and POST request / Python - [https://www.geeksforgeeks.org/get-post-requests-using-python/](https://www.geeksforgeeks.org/get-post-requests-using-python/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34529843",
+		"_collection_link": "https://dark-meadow-691389.postman.co/workspace/4572329a-bdd4-4e8f-8bdc-cca5be388da0/collection/34529843-da5e4e85-bd5c-43eb-bbf7-18e52380626b?action=share&source=collection_link&creator=34529843"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get authenticated user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.getpostman.com/me",
+							"protocol": "https",
+							"host": [
+								"api",
+								"getpostman",
+								"com"
+							],
+							"path": [
+								"me"
+							]
+						},
+						"description": "Gets information about the authenticated user."
+					},
+					"response": [
+						{
+							"name": "Successful Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.getpostman.com/me",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"id\": 12345678,\n        \"username\": \"taylor-lee\",\n        \"email\": \"taylor.lee@example.com\",\n        \"fullName\": \"Taylor Lee\",\n        \"avatar\": \"https://example.com/user/r5u9qpvmujfjf6lbqmga.jpg\",\n        \"isPublic\": true\n    },\n    \"operations\": [\n        {\n            \"name\": \"mock_usage\",\n            \"limit\": 1000000,\n            \"usage\": 110276,\n            \"overage\": 0\n        },\n        {\n            \"name\": \"monitor_request_runs\",\n            \"limit\": 10000000,\n            \"usage\": 1141750,\n            \"overage\": 0\n        },\n        {\n            \"name\": \"api_usage\",\n            \"limit\": 1000000,\n            \"usage\": 16240,\n            \"overage\": 0\n        },\n        {\n            \"name\": \"custom_domains\",\n            \"limit\": 25,\n            \"usage\": 25,\n            \"overage\": 0\n        },\n        {\n            \"name\": \"serverless_requests\",\n            \"limit\": 10000,\n            \"usage\": 0,\n            \"overage\": 0\n        },\n        {\n            \"name\": \"integrations\",\n            \"limit\": 5000,\n            \"usage\": 1018,\n            \"overage\": 0\n        },\n        {\n            \"name\": \"cloud_agent_requests\",\n            \"limit\": 1000000,\n            \"usage\": 1615,\n            \"overage\": 0\n        }\n    ]\n}"
+						},
+						{
+							"name": "Rate Limit Exceeded",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.getpostman.com/me",
+									"protocol": "https",
+									"host": [
+										"api",
+										"getpostman",
+										"com"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "Too Many Requests",
+							"code": 429,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": {
+										"content": "",
+										"type": "text/plain"
+									}
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"rateLimited\",\n    \"message\": \"Rate limit exceeded. Please retry after 1669048687\"\n}"
+						}
+					]
+				}
+			],
+			"description": "The `/me` endpoints let you manage information about the authenticated user."
+		},
+		{
+			"name": "Collections",
+			"item": [
+				{
+					"name": "New entry to DB",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "preset",
+									"value": "drivers",
+									"type": "text"
+								},
+								{
+									"key": "interest",
+									"value": "drivers",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/presets",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"presets"
+							]
+						},
+						"description": "This request lets you add new interests to a database"
+					},
+					"response": []
+				},
+				{
+					"name": "GET all DB entries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/presets",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"presets"
+							]
+						},
+						"description": "This request will fetch all entries in the database."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE specific DB entry",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/items/1",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"items",
+								"1"
+							]
+						},
+						"description": "This request is used to delete specific entries in the database, based on the entries \"id\""
+					},
+					"response": []
+				},
+				{
+					"name": "GET specific driver info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/items/3",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"items",
+								"3"
+							]
+						},
+						"description": "This request is used to fetch information based on a specific driver from the database, using \"id\"."
+					},
+					"response": []
+				},
+				{
+					"name": "GET all drivers info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/items/3",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"items",
+								"3"
+							]
+						},
+						"description": "This is used to get information on all drivers racing in 2024."
+					},
+					"response": [
+						{
+							"name": "GET all drivesr info example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/drivers",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"drivers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Werkzeug/3.0.1 Python/3.11.5"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 26 Apr 2024 11:46:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "10656"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"position\": 1,\n        \"driver\": {\n            \"id\": 25,\n            \"name\": \"Max Verstappen\",\n            \"abbr\": \"VER\",\n            \"number\": 1,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/25.png\"\n        },\n        \"team\": {\n            \"id\": 1,\n            \"name\": \"Red Bull Racing\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/1.png\"\n        },\n        \"points\": 110,\n        \"wins\": 4,\n        \"behind\": null,\n        \"season\": 2024\n    },\n    {\n        \"position\": 2,\n        \"driver\": {\n            \"id\": 10,\n            \"name\": \"Sergio Perez\",\n            \"abbr\": \"PER\",\n            \"number\": 11,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/10.png\"\n        },\n        \"team\": {\n            \"id\": 1,\n            \"name\": \"Red Bull Racing\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/1.png\"\n        },\n        \"points\": 85,\n        \"wins\": 0,\n        \"behind\": 25,\n        \"season\": 2024\n    },\n    {\n        \"position\": 3,\n        \"driver\": {\n            \"id\": 34,\n            \"name\": \"Charles Leclerc\",\n            \"abbr\": \"LEC\",\n            \"number\": 16,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/34.png\"\n        },\n        \"team\": {\n            \"id\": 3,\n            \"name\": \"Scuderia Ferrari\\n\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/3.png\"\n        },\n        \"points\": 76,\n        \"wins\": 0,\n        \"behind\": 34,\n        \"season\": 2024\n    },\n    {\n        \"position\": 4,\n        \"driver\": {\n            \"id\": 24,\n            \"name\": \"Carlos Sainz Jr\",\n            \"abbr\": \"SAI\",\n            \"number\": 55,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/24.png\"\n        },\n        \"team\": {\n            \"id\": 3,\n            \"name\": \"Scuderia Ferrari\\n\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/3.png\"\n        },\n        \"points\": 69,\n        \"wins\": 1,\n        \"behind\": 41,\n        \"season\": 2024\n    },\n    {\n        \"position\": 5,\n        \"driver\": {\n            \"id\": 49,\n            \"name\": \"Lando Norris\",\n            \"abbr\": \"NOR\",\n            \"number\": 4,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/49.png\"\n        },\n        \"team\": {\n            \"id\": 2,\n            \"name\": \"McLaren Racing\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/2.png\"\n        },\n        \"points\": 58,\n        \"wins\": 0,\n        \"behind\": 52,\n        \"season\": 2024\n    },\n    {\n        \"position\": 6,\n        \"driver\": {\n            \"id\": 97,\n            \"name\": \"Oscar Piastri\",\n            \"abbr\": null,\n            \"number\": 81,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/97.png\"\n        },\n        \"team\": {\n            \"id\": 2,\n            \"name\": \"McLaren Racing\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/2.png\"\n        },\n        \"points\": 38,\n        \"wins\": 0,\n        \"behind\": 72,\n        \"season\": 2024\n    },\n    {\n        \"position\": 7,\n        \"driver\": {\n            \"id\": 51,\n            \"name\": \"George Russell\",\n            \"abbr\": \"RUS\",\n            \"number\": 63,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/51.png\"\n        },\n        \"team\": {\n            \"id\": 5,\n            \"name\": \"Mercedes-AMG Petronas\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/5.png\"\n        },\n        \"points\": 33,\n        \"wins\": 0,\n        \"behind\": 77,\n        \"season\": 2024\n    },\n    {\n        \"position\": 8,\n        \"driver\": {\n            \"id\": 4,\n            \"name\": \"Fernando Alonso\",\n            \"abbr\": \"ALO\",\n            \"number\": 14,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/4.png\"\n        },\n        \"team\": {\n            \"id\": 17,\n            \"name\": \"Aston Martin F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/17.png\"\n        },\n        \"points\": 31,\n        \"wins\": 0,\n        \"behind\": 79,\n        \"season\": 2024\n    },\n    {\n        \"position\": 9,\n        \"driver\": {\n            \"id\": 20,\n            \"name\": \"Lewis Hamilton\",\n            \"abbr\": \"HAM\",\n            \"number\": 44,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/20.png\"\n        },\n        \"team\": {\n            \"id\": 5,\n            \"name\": \"Mercedes-AMG Petronas\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/5.png\"\n        },\n        \"points\": 19,\n        \"wins\": 0,\n        \"behind\": 91,\n        \"season\": 2024\n    },\n    {\n        \"position\": 10,\n        \"driver\": {\n            \"id\": 31,\n            \"name\": \"Lance Stroll\",\n            \"abbr\": \"STR\",\n            \"number\": 18,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/31.png\"\n        },\n        \"team\": {\n            \"id\": 17,\n            \"name\": \"Aston Martin F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/17.png\"\n        },\n        \"points\": 9,\n        \"wins\": 0,\n        \"behind\": 101,\n        \"season\": 2024\n    },\n    {\n        \"position\": 11,\n        \"driver\": {\n            \"id\": 82,\n            \"name\": \"Yuki Tsunoda\",\n            \"abbr\": \"TSU\",\n            \"number\": 22,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/82.png\"\n        },\n        \"team\": {\n            \"id\": 7,\n            \"name\": \"Visa Cash App RB Formula One Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/7.png\"\n        },\n        \"points\": 7,\n        \"wins\": 0,\n        \"behind\": 103,\n        \"season\": 2024\n    },\n    {\n        \"position\": 12,\n        \"driver\": {\n            \"id\": 101,\n            \"name\": \"Oliver Bearman\",\n            \"abbr\": null,\n            \"number\": null,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/101.png\"\n        },\n        \"team\": {\n            \"id\": 3,\n            \"name\": \"Scuderia Ferrari\\n\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/3.png\"\n        },\n        \"points\": 6,\n        \"wins\": 0,\n        \"behind\": 104,\n        \"season\": 2024\n    },\n    {\n        \"position\": 13,\n        \"driver\": {\n            \"id\": 6,\n            \"name\": \"Nico Hulkenberg\",\n            \"abbr\": \"HUL\",\n            \"number\": 27,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/6.png\"\n        },\n        \"team\": {\n            \"id\": 14,\n            \"name\": \"Haas F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/14.png\"\n        },\n        \"points\": 4,\n        \"wins\": 0,\n        \"behind\": 106,\n        \"season\": 2024\n    },\n    {\n        \"position\": 14,\n        \"driver\": {\n            \"id\": 2,\n            \"name\": \"Kevin Magnussen\",\n            \"abbr\": \"MAG\",\n            \"number\": 20,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/2.png\"\n        },\n        \"team\": {\n            \"id\": 14,\n            \"name\": \"Haas F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/14.png\"\n        },\n        \"points\": 1,\n        \"wins\": 0,\n        \"behind\": 109,\n        \"season\": 2024\n    },\n    {\n        \"position\": 15,\n        \"driver\": {\n            \"id\": 50,\n            \"name\": \"Alexander Albon\",\n            \"abbr\": \"ALB\",\n            \"number\": 23,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/50.png\"\n        },\n        \"team\": {\n            \"id\": 12,\n            \"name\": \"Williams F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/12.png\"\n        },\n        \"points\": null,\n        \"wins\": 0,\n        \"behind\": 110,\n        \"season\": 2024\n    },\n    {\n        \"position\": 16,\n        \"driver\": {\n            \"id\": 28,\n            \"name\": \"Esteban Ocon\",\n            \"abbr\": \"OCO\",\n            \"number\": 31,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/28.png\"\n        },\n        \"team\": {\n            \"id\": 13,\n            \"name\": \"Alpine F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/13.png\"\n        },\n        \"points\": null,\n        \"wins\": 0,\n        \"behind\": 110,\n        \"season\": 2024\n    },\n    {\n        \"position\": 17,\n        \"driver\": {\n            \"id\": 83,\n            \"name\": \"Guanyu Zhou\",\n            \"abbr\": null,\n            \"number\": 24,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/83.png\"\n        },\n        \"team\": {\n            \"id\": 8,\n            \"name\": \"Sauber F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/8.png\"\n        },\n        \"points\": null,\n        \"wins\": 0,\n        \"behind\": 110,\n        \"season\": 2024\n    },\n    {\n        \"position\": 18,\n        \"driver\": {\n            \"id\": 14,\n            \"name\": \"Daniel Ricciardo\",\n            \"abbr\": \"RIC\",\n            \"number\": 3,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/14.png\"\n        },\n        \"team\": {\n            \"id\": 7,\n            \"name\": \"Visa Cash App RB Formula One Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/7.png\"\n        },\n        \"points\": null,\n        \"wins\": 0,\n        \"behind\": 110,\n        \"season\": 2024\n    },\n    {\n        \"position\": 19,\n        \"driver\": {\n            \"id\": 36,\n            \"name\": \"Pierre Gasly\",\n            \"abbr\": \"GAS\",\n            \"number\": 10,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/36.png\"\n        },\n        \"team\": {\n            \"id\": 13,\n            \"name\": \"Alpine F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/13.png\"\n        },\n        \"points\": null,\n        \"wins\": 0,\n        \"behind\": 110,\n        \"season\": 2024\n    },\n    {\n        \"position\": 20,\n        \"driver\": {\n            \"id\": 5,\n            \"name\": \"Valtteri Bottas\",\n            \"abbr\": \"BOT\",\n            \"number\": 77,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/5.png\"\n        },\n        \"team\": {\n            \"id\": 8,\n            \"name\": \"Sauber F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/8.png\"\n        },\n        \"points\": null,\n        \"wins\": 0,\n        \"behind\": 110,\n        \"season\": 2024\n    },\n    {\n        \"position\": 21,\n        \"driver\": {\n            \"id\": 92,\n            \"name\": \"Logan Sargeant\",\n            \"abbr\": null,\n            \"number\": 2,\n            \"image\": \"https://media.api-sports.io/formula-1/drivers/92.png\"\n        },\n        \"team\": {\n            \"id\": 12,\n            \"name\": \"Williams F1 Team\",\n            \"logo\": \"https://media.api-sports.io/formula-1/teams/12.png\"\n        },\n        \"points\": null,\n        \"wins\": 0,\n        \"behind\": 110,\n        \"season\": 2024\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "The `/collections` endpoints let you manage your [collections](https://learning.postman.com/docs/sending-requests/intro-to-collections/)."
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "X-API-Key",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		}
+	]
+}
