@@ -3,16 +3,14 @@ import sqlite3
 import requests
 from urllib.request import urlopen
 
-import re
 from flask import Flask, request
-from flask_restx import Api, Resource, fields, reqparse, inputs
+from flask_restx import Api, Resource, fields, reqparse
+import re           # Ease the handling of regular expressions, such as looking for matching characters in strings
 from config import API_SPORTS_KEY
 
 app = Flask(__name__)
 
-api = Api(app, version='1.1', title='Robi F1 API',
-          description='Turts are Back :)', doc='/api/docs/ui')
-
+api = Api(app, version='1.1', title='Robi F1 API',description='Turts are Back :)')
 url = "https://v1.formula-1.api-sports.io"
 headers = {
     'x-rapidapi-key': API_SPORTS_KEY,
@@ -21,9 +19,6 @@ headers = {
 ns = api.namespace('Robins API', description='ONLY for Arsenal FANS!')
 
 
-@app.route('/home/<string:name>', methods=['POST', 'GET'])
-def home(name):
-    return f'<h1>Hello Mr. {name}, you have now arrived at Turts Paradize!</h1>'
 
 
 def save_json_file(name, data):
@@ -37,8 +32,7 @@ cursor = con.cursor()
 
 
 @app.route('/presets', methods=['GET', 'POST'])
-
-def items():
+def items():                        ### Kanske vi ska bytta namn på denna? user, profile eller annet
     if request.method == 'GET':
         # return list of items
         response = cursor.execute('SELECT * FROM F1searches')
@@ -59,15 +53,11 @@ def profile(item_id):
         return {'message': 'ID not found'}, 404
     if request.method == 'GET':
         interest = cursor.execute('SELECT interest FROM F1searches WHERE id=' + str(item_id)).fetchall()[0][0]
-        print(interest)
-        print(type(interest))
-        to_api = url + "/drivers?name=" + str(interest)
-        # to_api = to_api.replace(" ", "")
-        print(to_api)
-        interest_details = requests.get(to_api, headers=headers)
-        print(interest_details.text)
-        return str(interest_details.text)
-        #return SpecificDriver(Resource).get(interest)
+        # to_api = url + "/drivers?name=" + str(interest)
+        # interest_details = requests.get(to_api, headers=headers)
+        # return str(interest_details.text)
+        #interest = interest.replace(" ", "")
+        return SpecificDriver(Resource).get(interest)
     elif request.method == 'DELETE':
         response = cursor.execute('DELETE FROM F1searches WHERE id=' + str(item_id))
         con.commit()
@@ -84,52 +74,44 @@ class SpecificDriver(Resource):
         with open('driver_2024.json', 'r') as j_file:
             data = json.load(j_file)
             return data
+
+    def load_rankings(self):
+        rankings = requests.get(url + "/rankings/drivers?season=2024", headers=headers)
+        data = rankings.json()
+        return data
+
     def get(self, name):
-        """Fetch a specific driver, name given by API user"""
-        if not re.match(r'^[a-zA-Z0-9]+$', name):   # ^ symbol for start of string and $ symbol for end of string
+        if not re.match(r'^[\s\w]+$', name):   # ^ symbol for start of string and $ symbol for end of string ## https://support.kobotoolbox.org/restrict_responses.html
             return {'message': 'Driver name does not exists or is typed in wrong format'}, 404
 
-
-        drivers_data = self.load_drivers_data()
-        for driver_info in drivers_data['response']:        ### KAN TAS BORT, eller KOM IHÅG att updatera inför inlämning/live demo, hämta direkte från Externa API'et!!
+        drivers_data = self.load_rankings()  # self.load_drivers_data()
+        print(drivers_data)
+        for driver_info in drivers_data['response']:        ### kanske.. KAN TAS BORT!!
             driver_name = driver_info['driver']['name']
-            if name.lower() in driver_name.lower():
+            if name.lower() in driver_name.lower():         ### opdaterat til in istället för ==, nu ska Fernando få främ 'Fernando Alonso'.
                 print(f'Now we found the name {name} in our list\n')
                 print(f'API user request driver: {name}\nAPI provide info: {driver_info["driver"]}')
-                driver = driver_info['driver'], driver_info['team']
-                return driver,  200
-
-        return {'driver':
-                    {'message': f'{name} is not found in Formula 1'}}, 404
+                driver = [driver_info['driver'], driver_info['team'], {"points": driver_info['points']}]
+                return driver, 200
 
 
 @api.route('/drivers')
 class Drivers(Resource):
     def get(self):
-        drivers = "/rankings/drivers?season=2024"
+        drivers_url = f"{url}/rankings/drivers?season=2024"
 
-        response = requests.get(url + drivers, headers=headers)
+        response = requests.get(drivers_url, headers=headers)
         response_data = response.json()
 
-        if response.ok:
-            print(response.status_code)         # Bara använt för at kolla; Ta bort innan inlämning
-            print(response_data['response'])    # Bara använt för at kolla; Ta bort innan inlämning
+        if response.ok:  # Checks if response status code is 200
+            print(response.status_code)             # Bara for att kolla, ska tas bort innan inlämning
+            print(response_data['response'])        # Bara for att kolla, ska tas bort innan inlämning
             return response_data['response'], 200
         else:
             return {'error': 'Failed to fetch data'}, response.status_code
-
-        # drivers_json = json.dumps(response_data, indent=4)
-        # save_json_file('driver_2024', drivers_json)
-
-
-
-
 
 
 
 if __name__ == '__main__':
     app.run(debug=True)
 
-
-# parser = reqparse.RequestParser()
-# parser.add_argument('interest', type=str, required=True, help='Interest must be a valid Formula 1 driver name', location='form')
