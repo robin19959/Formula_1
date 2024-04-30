@@ -1,2 +1,132 @@
-Here we beautify you Turts documentation !!
-:)
+openapi: 3.1.0
+info:
+  title: Team Turts Formula 1 API
+  version: 1.0.0
+  description: Whether you are a fantasy Formula 1 enthusiast, a tech-savvy Formula 1 fan, or a family-oriented traveler following the F1 circuit, the Team Turts API brings you closer to the drivers racing in Formula 1.
+  contact:
+    name: API Support Team
+    email: support@teamturtsf1api.com
+    url: http://localhost:5000/contact
+servers:
+  - url: http://localhost:5000/
+    description: Local development server
+
+paths:
+  /drivers:
+    get:
+      summary: Retrieves all Formula 1 drivers racing in 2024.
+      responses:
+        '200':
+          description: A list of all F1 drivers and their details, one driver example shown.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  drivers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Driver'
+        '404':
+          description: No drivers found.
+
+  /presets:
+    post:
+      summary: Adds new interests to the database.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                preset:
+                  type: string
+                interest:
+                  type: string
+      responses:
+        '201':
+          description: Successfully added the preset.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: 'Preset added successfully'
+        '400':
+          description: Bad request, failed to add preset due to invalid input.
+
+  /db/{id}:
+    get:
+      summary: Fetches information based on a specific driver from the database, using their ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully fetched driver information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  driverInfo:
+                    $ref: '#/components/schemas/Driver'
+        '404':
+          description: Driver not found.
+
+components:
+  schemas:
+    Driver:
+      type: object
+      properties:
+        position:
+          type: integer
+          example: 8
+        driver:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 4
+            name:
+              type: string
+              example: 'Fernando Alonso'
+            abbr:
+              type: string
+              example: 'ALO'
+            number:
+              type: integer
+              example: 14
+            image:
+              type: string
+              example: 'https://media.api-sports.io/formula-1/drivers/4.png'
+        team:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 17
+            name:
+              type: string
+              example: 'Aston Martin F1 Team'
+            logo:
+              type: string
+              example: 'https://media.api-sports.io/formula-1/teams/17.png'
+        points:
+          type: integer
+          example: 7
+        wins:
+          type: integer
+          example: 0
+        behind:
+          type: integer
+          example: 79
+        season:
+          type: integer
+          example: 2024
