@@ -31,6 +31,22 @@ paths:
           description: No drivers found.
 
   /presets:
+    get:
+      summary: Retrieves all presets and interests (driver) from the database (SQLite).
+      responses:
+        '200':
+          description: Successfully retrieved all presets
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  presets:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Preset'
+        '404':
+          description: No presets found.
     post:
       summary: Adds new interests to the database.
       requestBody:
@@ -54,7 +70,7 @@ paths:
                 properties:
                   message:
                     type: string
-                    example: 'Preset added successfully'
+                    examples: ['Preset added successfully']
         '400':
           description: Bad request, failed to add preset due to invalid input.
 
@@ -79,6 +95,27 @@ paths:
                     $ref: '#/components/schemas/Driver'
         '404':
           description: Driver not found.
+    delete:
+      summary: Deletes specific database entry by ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successfully deleted database entry.
+          content:
+            application:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    examples: ['Database entry deleted successfully']
+        '404':
+          description: Database entry not found.
 
 components:
   schemas:
@@ -87,46 +124,55 @@ components:
       properties:
         position:
           type: integer
-          example: 8
+          examples: [8]
         driver:
           type: object
           properties:
             id:
               type: integer
-              example: 4
+              examples: [4]
             name:
               type: string
-              example: 'Fernando Alonso'
+              examples: ['Fernando Alonso']
             abbr:
               type: string
-              example: 'ALO'
+              examples: ['ALO']
             number:
               type: integer
-              example: 14
+              examples: [14]
             image:
               type: string
-              example: 'https://media.api-sports.io/formula-1/drivers/4.png'
+              examples: ['https://media.api-sports.io/formula-1/drivers/4.png']
         team:
           type: object
           properties:
             id:
               type: integer
-              example: 17
+              examples: [17]
             name:
               type: string
-              example: 'Aston Martin F1 Team'
+              examples: ['Aston Martin F1 Team']
             logo:
               type: string
-              example: 'https://media.api-sports.io/formula-1/teams/17.png'
+              examples: ['https://media.api-sports.io/formula-1/teams/17.png']
         points:
           type: integer
-          example: 7
+          examples: [7]
         wins:
           type: integer
-          example: 0
+          examples: [0]
         behind:
           type: integer
-          example: 79
+          examples: [79]
         season:
           type: integer
-          example: 2024
+          examples: [2024]
+    Preset:
+      type: object
+      properties:
+        id:
+          type: integer
+          preset:
+            type: string
+          interest:
+            type: string
