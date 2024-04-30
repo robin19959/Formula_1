@@ -374,5 +374,6 @@ pyrightconfig.json
 
 # TeamTurts Extra ignore
 config.py
+venv
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm,flask
