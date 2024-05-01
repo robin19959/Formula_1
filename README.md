@@ -71,8 +71,8 @@
     1. Receives the user's input for driver's name.
     2. Makes a request to the external API to fetch the current list of F1 drivers.
     3. Checks if the submitted driver's name (step 1) exists in the fetched list.
-        4. If driver exists, the API proceeds to store the user's preset interest in the database.
-        5. If driver does NOT exist, returns an error message refering user to check spelling or current season's driver list.
+    4. If driver exists, the API proceeds to store the user's preset interest in the database.
+    5. If driver does NOT exist, returns an error message refering user to check spelling or current season's driver list.
 
     Method implemented with purpose to ensure the database remains accurate and up to date with valid F1 driver information. 
 
