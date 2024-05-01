@@ -36,7 +36,7 @@
     2. Install dependencies from 'requirements.txt'.
     3. (Optional) Set up own database for more customization.
     4. Set the 'API_SPORTS_KEY' in the 'config.py' for API authentication.
-    5. Run 'python man.py' to start the server.
+    5. Run 'python main.py' to start the server.
 
 
 ## Project Structure
