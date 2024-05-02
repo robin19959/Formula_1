@@ -54,7 +54,7 @@ def check_and_add_db():
             return {'message': f'The driver: {interest} does not exist, check your spelling.'}, 403
 
 
-@app.route('/db/<item_id>', methods=['GET', 'DELETE'])
+@app.route('/presets/<item_id>', methods=['GET', 'DELETE'])
 def delete_and_fetchone_db(item_id):
     """Route used for getting and deleting specific elements in database using id"""
     item = cursor.execute('SELECT * FROM F1searches WHERE id=?', (item_id,)).fetchone()
