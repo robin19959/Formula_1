@@ -74,7 +74,7 @@ paths:
         '400':
           description: Bad request, failed to add preset due to invalid input.
 
-  /db/{id}:
+  /presets/{id}:
     get:
       summary: Fetches information based on a specific driver from the database, using their ID.
       parameters:
